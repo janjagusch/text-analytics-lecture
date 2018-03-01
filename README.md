@@ -15,12 +15,14 @@ Project Organization
     │
     ├── notebooks          <- Jupyter notebooks.
     │
+    ├── presentations      <- Presentations that cover the course content.
+    │
     ├── reports            <- Generated analysis as HTML, PDF, LaTeX, etc.
     │   └── figures        <- Generated graphics and figures to be used in reporting
     │
     ├── environment.yml    <- The environment file (Anaconda) for reproducing the analysis environment.
     │
-    ├── src                <- Source code for use in this project.
+    └── src                <- Source code for use in this project.
         ├── __init__.py    <- Makes src a Python module
         │
         ├── data           <- Scripts to download or generate data
