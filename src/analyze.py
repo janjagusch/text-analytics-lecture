@@ -9,6 +9,7 @@ def main():
 
     # Print basic averages
     print("Averages:")
+    print(calculate_average_tweets_per_day(trump_tweet_set))
     # TODO: Calculate average tweet per day.
     avg_tweet = 0
     print("In average, Trump posts {} tweets per day.".format(round(avg_tweet)))
@@ -23,6 +24,7 @@ def main():
 
     # Print term-filtered averages
     print("Term-Filtered Averages:")
+    calculate_average_tweets_per_day(filter_by_term(trump_tweet_set, 'Fake Nwsw'))
     # TODO: Calculate average tweets per day that contain 'Fake News'.
     avg_tweet_tf = 0
     print("In average, Trump posts {} tweets about 'Fake News' per day.".format(round(avg_tweet_tf)))

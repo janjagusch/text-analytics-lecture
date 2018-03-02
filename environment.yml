@@ -5,7 +5,7 @@ dependencies:
   - certifi
   - nltk
   - pip
-  - python=3.6
+  - python
   - setuptools
   - six
   - vc
