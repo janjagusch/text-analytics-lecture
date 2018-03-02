@@ -1,0 +1,33 @@
+name: text_analytics
+channels:
+  - defaults
+dependencies:
+  - certifi
+  - nltk
+  - pip
+  - python=3.6
+  - setuptools
+  - six
+  - vc
+  - vs2015_runtime
+  - wheel
+  - wincertstore
+  - pip:
+    - arrow
+    - binaryornot
+    - chardet
+    - click
+    - cookiecutter
+    - future
+    - idna
+    - jinja2
+    - jinja2-time
+    - markupsafe
+    - poyo
+    - python-dateutil
+    - requests
+    - tabulate
+    - urllib3
+    - whichcraft
+
+
