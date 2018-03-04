@@ -81,5 +81,5 @@ target/
 # Jupyter NB Checkpoints
 .ipynb_checkpoints/
 
-# exclude data from source control by default
-# /data/
+# exclude week_3.data from source control by default
+# /week_3.data/
