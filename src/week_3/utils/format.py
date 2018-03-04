@@ -5,7 +5,7 @@ def format_tweets_table(tweets):
     """
     Formats the tweets in a tabular style.
     Args:
-        tweets: A list or set of tweet objects
+        tweets: A list or set of week_3.tweet objects
     Returns:
         A string formatted table of tweets
     """
@@ -27,12 +27,12 @@ def format_mentions_table(mentions):
 
 def _convert_tweet_to_list(tweet):
     """
-    Converts a tweet to a list object
+    Converts a week_3.tweet to a list object
     Args:
-        tweet: A tweet object
+        tweet: A week_3.tweet object
 
     Returns:
-        A list with tweet information
+        A list with week_3.tweet information
     """
 
     return [tweet.created_at, tweet.retweet_count, tweet.favorite_count, tweet.text]

@@ -1,14 +1,14 @@
 from statistics import mean
 from tweet.tweet import *
 from collections import Counter
-from re import split, search
+from re import split
 
 
 def calculate_average_tweets_per_day(tweet_set):
     """
     Calculated the average number of tweets per day.
     Args:
-        tweet_set: Set of tweet objects.
+        tweet_set: Set of week_3.tweet objects.
 
     Returns:
         Float value, corresponding to the average number of tweets.
@@ -28,17 +28,17 @@ def calculate_average_word_count(tweet_set):
     Args:
         tweet_set: A set of tweets.
     Returns:
-        The average number of words per tweet (float).
+        The average number of words per week_3.tweet (float).
     """
     return mean([tweet.count_number_of_words() for tweet in tweet_set])
 
 
 def calculate_average_popularity(tweet_set):
     """
-    Calculates average popularity of tweet set.
+    Calculates average popularity of week_3.tweet set.
 
     Args:
-        tweet_set: A set of tweet objects.
+        tweet_set: A set of week_3.tweet objects.
     Returns:
         A float corresponding to the average popularity.
     """
@@ -47,13 +47,13 @@ def calculate_average_popularity(tweet_set):
 
 def get_most_popular_tweets(tweet_set, most_popular=10):
     """
-    Retrieves most popular tweets from tweet set.
+    Retrieves most popular tweets from week_3.tweet set.
     Args:
-        tweet_set: Set of tweet objects.
+        tweet_set: Set of week_3.tweet objects.
         most_popular: Number of tweets to be retrieved, default is 10.
 
     Returns:
-        A list of tweet objects.
+        A list of week_3.tweet objects.
     """
     # Sort tweets based on popularity
     sorted_tweets = sorted(tweet_set, key=Tweet.calculate_popularity)
@@ -63,10 +63,10 @@ def get_most_popular_tweets(tweet_set, most_popular=10):
 
 def get_top_mentions(tweet_set, top_mentions=10):
     """
-    Returns the top mentions (@...) and the count from the tweet set.
+    Returns the top mentions (@...) and the count from the week_3.tweet set.
 
     Args:
-        tweet_set: A set of tweet objects.
+        tweet_set: A set of week_3.tweet objects.
         top_mentions: Maximum number of mentions to return (default: 10)
 
     Returns:

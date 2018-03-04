@@ -3,12 +3,12 @@ from datetime import datetime
 
 def _clean_tween_date_string(date_string):
     """
-    Cleans tweet date string.
+    Cleans week_3.tweet date string.
     Args:
-        date_string: A tweet date string.
+        date_string: A week_3.tweet date string.
 
     Returns:
-        A cleaned tweet date string in format
+        A cleaned week_3.tweet date string in format
     """
     date_list = date_string.split()
     year = date_list[5]
@@ -21,7 +21,7 @@ def _clean_tween_date_string(date_string):
 
 def convert_tweet_string_to_date(date_string):
     """
-    Converts data in string format to date object:
+    Converts week_3.data in string format to date object:
 
     Args:
         date_string: Date in string format (e.g. 'Sat Dec 30 22:42:09 +0000 2017')
