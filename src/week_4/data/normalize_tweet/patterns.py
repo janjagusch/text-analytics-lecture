@@ -130,6 +130,7 @@ SPECIAL_CHARACTERS = ['$', '&', '*', '%', '(', ')', '~', '-', '"', "'", ',']
 
 SENTENCE_TOKENS_PATTERN = r'(?<!\w\.\w.)(?<![A-Z][a-z]\.)(?<![A-Z]\.)(?<=\.|\?|\!)\s'
 
+
 def get_special_characters_pattern():
     """
     Retrieves regular expression pattern from special characters.
@@ -141,3 +142,6 @@ def get_special_characters_pattern():
     # Converts list to regular expression pattern
     special_characters_pattern = compile('[{}]'.format(''.join(special_characters_string)))
     return special_characters_pattern
+
+
+TOKEN_PATTERN = r'\w+'

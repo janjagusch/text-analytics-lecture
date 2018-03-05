@@ -1,5 +1,5 @@
 from statistics import mean
-from tweet.tweet import *
+from week_3.tweet.tweet import Tweet
 from collections import Counter
 from re import split
 

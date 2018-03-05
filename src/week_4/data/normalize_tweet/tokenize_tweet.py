@@ -1,5 +1,6 @@
-from nltk import sent_tokenize
-from nltk.tokenize import PunktSentenceTokenizer, RegexpTokenizer
+from nltk import sent_tokenize, word_tokenize
+from nltk.tokenize import PunktSentenceTokenizer, RegexpTokenizer, TreebankWordTokenizer, WordPunctTokenizer, \
+    WhitespaceTokenizer
 from week_4.data.normalize_tweet.patterns import SENTENCE_TOKENS_PATTERN
 
 
@@ -39,3 +40,14 @@ def sentence_tokenize_tweet(tweet, sentence_tokenizer_id='default'):
     """
     tweet.text_processed['text_sentence_tokenized'] = \
         _sentence_tokenize(tweet.text_processed['text_remove_special_characters'], sentence_tokenizer_id)
+
+
+word_tokenizer_default = word_tokenize
+
+word_tokenizer_treebank = TreebankWordTokenizer.tokenize
+
+word_tokenizer_regex = RegexpTokenizer(pattern=TOKEN_PATTERN, gaps=False).tokenize
+
+word_tokenizer_punkt = WordPunctTokenizer.tokenize
+
+word_tokenizer_whitespace = WhitespaceTokenizer.tokenize

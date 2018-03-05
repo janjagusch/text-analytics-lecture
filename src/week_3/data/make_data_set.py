@@ -1,7 +1,7 @@
 from json import loads
 from os.path import join, dirname
 from os import pardir
-from tweet.tweet import create_tweet_from_dict
+from week_3.tweet.tweet import create_tweet_from_dict
 
 
 def make_tweet_set(filename):

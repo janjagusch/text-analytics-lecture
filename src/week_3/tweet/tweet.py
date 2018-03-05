@@ -1,4 +1,4 @@
-from utils.convert import convert_tweet_string_to_date
+from week_3.utils.convert import convert_tweet_string_to_date
 
 
 class Tweet(object):

@@ -1,8 +1,8 @@
-from data.make_data_set import make_tweet_set
-from data.filter_data_set import filter_by_term, filter_by_date
-from features.build_tweet_features import calculate_average_tweets_per_day, calculate_average_popularity, \
+from week_3.data.make_data_set import make_tweet_set
+from week_3.data.filter_data_set import filter_by_term, filter_by_date
+from week_3.features.build_tweet_features import calculate_average_tweets_per_day, calculate_average_popularity, \
     calculate_average_word_count, get_most_popular_tweets, get_top_mentions
-from utils.format import format_tweets_table, format_mentions_table
+from week_3.utils.format import format_tweets_table, format_mentions_table
 
 
 def main():
