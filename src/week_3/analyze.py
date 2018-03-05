@@ -90,5 +90,6 @@ def main():
     mpt_df = get_most_popular_tweets(filter_by_date(trump_tweet_set, '2015/01/01', '2015/12/31'), most_popular=5)
     print(format_tweets_table(mpt_df))
 
+
 if __name__ == "__main__":
     main()
