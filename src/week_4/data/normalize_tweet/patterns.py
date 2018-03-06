@@ -1,4 +1,4 @@
-from re import compile
+from re import compile, match
 
 CONTRACTION_MAP = {
     "ain't": "is not",
@@ -145,3 +145,12 @@ def get_special_characters_pattern():
 
 
 TOKEN_PATTERN = r'\w+'
+
+SENTENCE_ENDING_CHARACTER = ['.', '?', '!']
+
+
+def get_sentence_ending_characters_pattern():
+    # Adds literal to each character
+    sentence_ending_characters_literal = ['\\' + character for character in SENTENCE_ENDING_CHARACTER]
+    sentence_ending_characters_pattern = compile('[{}]+'.format(''.join(sentence_ending_characters_literal)))
+    return sentence_ending_characters_pattern

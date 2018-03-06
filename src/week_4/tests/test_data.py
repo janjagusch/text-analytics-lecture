@@ -1,8 +1,11 @@
 import unittest
 from week_4.data.make_data_set import make_tweet_set
-from week_4.data.normalize_tweet.normalize_tweet import expand_tweet, lower_case_tweet, remove_special_characters_tweet
+from week_4.data.normalize_tweet.normalize_tweet import expand_tweet, lower_case_tweet, \
+    remove_special_characters_tweet, remove_end_characters_tweet, remove_stopwords_tweet
 from week_4.utils.lookup import get_tweet_by_tweet_id
-from week_4.data.normalize_tweet.tokenize_tweet import sentence_tokenize_tweet
+from week_4.data.normalize_tweet.tokenize_tweet import sentence_tokenize_tweet, word_tokenize_tweet
+from string import punctuation
+from re import escape
 
 
 class TestNormalizeTweet(unittest.TestCase):
@@ -43,6 +46,37 @@ class TestNormalizeTweet(unittest.TestCase):
                          'just as i have been predicting for years iraq will fall'
                          ' to the people that hate the u.s. the most just outside of baghdad.')
         self.assertEqual(test_tweet.text_processed['text_sentence_tokenized'][1], 'keep the oil')
+
+    def test_word_tokenize_tweet(self):
+        test_tweet = get_tweet_by_tweet_id(self.trump_tweet_set, '495380307911385088')
+        expand_tweet(test_tweet)
+        lower_case_tweet(test_tweet)
+        remove_special_characters_tweet(test_tweet)
+        sentence_tokenize_tweet(test_tweet)
+        word_tokenize_tweet(test_tweet)
+        self.assertEqual(test_tweet.text_processed['text_word_tokenized'][0][17], 'u.s.')
+        self.assertEqual(test_tweet.text_processed['text_word_tokenized'][1][2], 'oil')
+
+    def test_remove_end_characters_tweet(self):
+        test_tweet = get_tweet_by_tweet_id(self.trump_tweet_set, '495380307911385088')
+        expand_tweet(test_tweet)
+        lower_case_tweet(test_tweet)
+        remove_special_characters_tweet(test_tweet)
+        sentence_tokenize_tweet(test_tweet)
+        word_tokenize_tweet(test_tweet)
+        remove_end_characters_tweet(test_tweet)
+        self.assertEqual(test_tweet.text_processed['remove_end_characters'][0][-1], 'baghdad')
+
+    def test_remove_stopwords_tweet(self):
+        test_tweet = get_tweet_by_tweet_id(self.trump_tweet_set, '495380307911385088')
+        expand_tweet(test_tweet)
+        lower_case_tweet(test_tweet)
+        remove_special_characters_tweet(test_tweet)
+        sentence_tokenize_tweet(test_tweet)
+        word_tokenize_tweet(test_tweet)
+        remove_end_characters_tweet(test_tweet)
+        remove_stopwords_tweet(test_tweet)
+        self.assertNotIn('the', test_tweet.text_processed['remove_stopwords'][0])
 
 
 if __name__ == '__main__':

@@ -1,5 +1,8 @@
-from week_4.data.normalize_tweet.patterns import CONTRACTION_MAP, get_special_characters_pattern
-from re import compile, IGNORECASE, DOTALL, sub, escape
+from week_4.data.normalize_tweet.patterns import CONTRACTION_MAP, get_special_characters_pattern, \
+    get_sentence_ending_characters_pattern
+from re import compile, IGNORECASE, DOTALL, sub, match
+from nltk.corpus import stopwords
+
 
 
 def _expand_contractions(sentence):
@@ -91,3 +94,38 @@ def remove_special_characters_tweet(tweet):
     """
     tweet.text_processed['text_remove_special_characters'] = \
         _remove_special_characters(tweet.text_processed['text_lower_case'])
+
+
+def _remove_end_characters(word_token_list):
+    return [word_token for word_token in word_token_list if not match(get_sentence_ending_characters_pattern(), word_token)]
+
+
+def remove_end_characters_tweet(tweet):
+    tweet.text_processed['remove_end_characters'] = \
+        [_remove_end_characters(word_token_list) for word_token_list in tweet.text_processed['text_word_tokenized']]
+
+
+def _remove_stopwords(word_token_list):
+    """
+
+    Args:
+        word_token_list:
+
+    Returns:
+
+    """
+    stopword_list = stopwords.words('english')
+    return [word_token for word_token in word_token_list if word_token not in stopword_list]
+
+
+def remove_stopwords_tweet(tweet):
+    """
+
+    Args:
+        tweet:
+
+    Returns:
+
+    """
+    tweet.text_processed['remove_stopwords'] = \
+        [_remove_stopwords(word_token_list) for word_token_list in tweet.text_processed['remove_end_characters']]
