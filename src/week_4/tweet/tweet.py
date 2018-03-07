@@ -44,6 +44,15 @@ class Tweet(object):
         """
         return hash(self.tweet_id)
 
+    def get_text_element(self, text_id):
+        """Returns specified text element."""
+        # If text_id is raw, return text_raw.
+        if text_id == 'raw':
+            return self.text_raw
+        # If text_id is in keys of text_processed, return value from text_processes.
+        if text_id in self.text_processed.keys():
+            return self.text_processed[text_id]
+
     def count_number_of_words(self):
         """
         Counts the words in the week_3.tweet.

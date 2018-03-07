@@ -1,4 +1,4 @@
-from week_4.data.make_data_set import make_tweet_set
+from week_4.data.load_data import make_tweet_set
 from week_4.data.filter_data_set import filter_by_term, filter_by_date
 from week_4.features.build_tweet_features import calculate_average_tweets_per_day, calculate_average_popularity, \
     calculate_average_word_count, get_most_popular_tweets, get_top_mentions
