@@ -1,10 +1,9 @@
 from pattern.text.en import tag
 from nltk.parse.stanford import StanfordDependencyParser, StanfordParser
 
+sentence = ['The', 'smart', 'boy', 'likes', 'watching', 'blue', 'birds']
 
-
-
-
+print(tag(sentence))
 
 
 path_to_jar = 'C://Users//Jan//Documents//stanford-corenlp-full-2018-02-27//stanford-corenlp-3.9.1.jar'
@@ -13,7 +12,7 @@ path_to_models_jar = 'C://Users//Jan//Documents//stanford-corenlp-full-2018-02-2
 dep_parser = StanfordDependencyParser(path_to_jar=path_to_jar, path_to_models_jar=path_to_models_jar)
 parser = StanfordParser(path_to_jar=path_to_jar, path_to_models_jar=path_to_models_jar)
 
-sentence = ['The', 'smart', 'boy', 'likes', 'watching', 'birds']
+sentence = ['The', 'smart', 'boy', 'likes', 'watching', 'blue', 'birds']
 
 # print(list(parser.raw_parse("the quick brown fox jumps over the lazy dog")))
 # print([parse.tree() for parse in dep_parser.raw_parse("The quick brown fox jumps over the lazy dog.")])
