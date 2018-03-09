@@ -48,10 +48,10 @@ class TestProcessTest(unittest.TestCase):
         self.assertEqual(processed_text, ['i', 'have', 'finally', 'beaten', 'the', 'chinese', 'government'])
 
     def test_convert_word_stem(self):
-        text = ['i', 'am', 'laughing', 'about', 'the', 'countries', 'joking', 'about', 'my', 'presidency']
+        text = ['i', 'am', 'laughing', 'at', 'the', 'countries', 'joking', 'about', 'my', 'presidency']
         processed_text = convert_word_stem(text)
         self.assertEqual(processed_text,
-                         ['i', 'am', 'laugh', 'about', 'the', 'countri', 'joke', 'about', 'my', 'presid'])
+                         ['i', 'am', 'laugh', 'at', 'the', 'countri', 'joke', 'about', 'my', 'presid'])
 
 
 if __name__ == '__main__':
