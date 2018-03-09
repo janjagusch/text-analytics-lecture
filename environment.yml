@@ -1,4 +1,4 @@
-name: text_analytics2
+name: text_analytics
 channels:
   - defaults
 dependencies:
