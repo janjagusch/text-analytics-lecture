@@ -1,16 +1,16 @@
 from sklearn.datasets import fetch_20newsgroups
+from os.path import join, dirname
 
 
 def load_dataset(train_test_all):
-
-    # data_home = join(dirname(__file__), '20news_home')
+    
     # data_home = '/Users/pelejaf/Documents/workspace/textmining/text-analytics-lecture/src/week_5/data/'
 
     categories = ['alt.atheism', 'soc.religion.christian', 'comp.graphics', 'sci.med']
 
     # The selection of categories is optional. If empty we will obtain samples from all categories
     # subset can be: train, test or all
-    dataset = fetch_20newsgroups('all')
+    dataset = fetch_20newsgroups(subset=train_test_all, categories=categories, shuffle=True, random_state=42, download_if_missing=True)
 
     # dataset = fetch_20newsgroups(subset=train_test_all, categories=categories, shuffle=True, random_state=42,
     #                              download_if_missing=False)
