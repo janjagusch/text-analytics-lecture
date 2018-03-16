@@ -7,6 +7,7 @@ from src.week_5.features.process_text.feature_weighting import compute_tfidf, co
 from src.week_5.models.supervised_classification import multinomial_naive_bayes, look_at_predictions, prediction
 from src.week_5.utils.look_tfidfs import look_at_features
 
+
 def main():
     """
     The objective of this class is to investigate different techniques to:
@@ -16,7 +17,6 @@ def main():
         4. Supervised learning
         5. Evaluation metrics
     """
-
 
     """
     1. Learn how our data is strutured
@@ -52,6 +52,9 @@ def main():
                 a) Is it the same as before we applied the lemmas? Yes/No what happen?
     """
 
+    """----------------------------------------------------------------------"""
+    """ # DELETE THIS LINE AFTER YOU FINISH BLOCK 1
+
     # Tokenization (BOW)
     bow_index, bow_vectorizer = word_tokenize(news_train.data)  # data.data = data_lst.tolist()
 
@@ -77,11 +80,17 @@ def main():
     # Look at some of the vocabulary
     print(bigram_vectorizer.get_feature_names()[200000:200010])
 
+    """ # DELETE THIS LINE AFTER YOU FINISH BLOCK 1
+    """----------------------------------------------------------------------"""
+
     """
     3. TF-IDF
         3.1 Look at the functions: tfidf, tfidf_lemma_stopwords (week_5.features.process_text.feature_weighting)
         3.2 Run the bellow code. Notice that if we use stopwords or lemmatization TFIDF weights change. Why is that?
     """
+
+    """----------------------------------------------------------------------"""
+    """ # DELETE THIS LINE AFTER YOU FINISH BLOCK 2
 
     tfidf, idfs = compute_tfidf(news_train.data)
 
@@ -101,11 +110,18 @@ def main():
     response = tfidfle_sw.transform([sentence])
     look_at_features(tfidfle_sw, response)
 
+    """ # DELETE THIS LINE AFTER YOU FINISH BLOCK 2
+    """----------------------------------------------------------------------"""
+
     """
     4. Supervised learning
         4.1 Compute the Multinominal Naive Bayes for BOW, Bigrams and TFIDF (with lemmas and stopwords)
         4.2 Implement SVM (TIP: http://scikit-learn.org/stable/modules/generated/sklearn.svm.SVC.html)
     """
+
+    """----------------------------------------------------------------------"""
+    """ # DELETE THIS LINE AFTER YOU FINISH BLOCK 3
+
     tfidf, idfs = compute_tfidf(news_train.data)
     news_test = dt.load_dataset('test')
     mnb_model = multinomial_naive_bayes(idfs, news_train.target)
@@ -114,15 +130,25 @@ def main():
 
     look_at_predictions(predicted, news_train, news_test.filenames)
 
+    """ # DELETE THIS LINE AFTER YOU FINISH BLOCK 3
+    """----------------------------------------------------------------------"""
+
     """
     5.  Evaluation metrics
         Notice that f1_score can be computed with different averages
 
         5.1 Finish metrics implementation for accuracy, precision and recall
     """
+
+    """----------------------------------------------------------------------"""
+    """ # DELETE THIS LINE AFTER YOU FINISH BLOCK 4
+
     f1_score = metrics.f1_score(news_test.target, predicted, average='macro')
 
     print('Multinomial Naive Bayes model (TFIDF) F1-SCORE: '+str(f1_score))
+
+    """ # DELETE THIS LINE AFTER YOU FINISH BLOCK 4
+    """----------------------------------------------------------------------"""
 
 if __name__ == "__main__":
     main()
