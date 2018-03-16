@@ -57,30 +57,30 @@ def main():
 
     """----------------------------------------------------------------------"""
 
-    # Tokenization (BOW)
-    bow_index, bow_vectorizer = word_tokenize(news_train.data)  # data.data = data_lst.tolist()
-
-    # Vocabulary size
-    print('Vocabulary size (bow): '+str(vocabulary_size(bow_vectorizer)))
-
-    # Look at some of the vocabulary
-    print(bow_vectorizer.get_feature_names()[10000:10010])
-
-    # Try an example
-    bow_analyze = bow_vectorizer.build_analyzer()
-    bow_sample = bow_analyze('Working with text is super cool!')
-    print('BOW sample: '+str(bow_sample))
-
-    # Tokenization (bigrams)
-    bigram_index, bigram_vectorizer = ngrams_tokenize(news_train.data, 1, 2)
-
-    # Vocabulary size
-    print('Vocabulary size (bigrams): '+str(vocabulary_size(bigram_vectorizer)))
-    perc = round(float(vocabulary_size(bigram_vectorizer)*100)/vocabulary_size(bow_vectorizer), 2)
-    print('Bigrams vocabulary size is '+str(perc)+'% larger than bow')
-
-    # Look at some of the vocabulary
-    print(bigram_vectorizer.get_feature_names()[200000:200010])
+    # # Tokenization (BOW)
+    # bow_index, bow_vectorizer = word_tokenize(news_train.data)  # data.data = data_lst.tolist()
+    #
+    # # Vocabulary size
+    # print('Vocabulary size (bow): '+str(vocabulary_size(bow_vectorizer)))
+    #
+    # # Look at some of the vocabulary
+    # print(bow_vectorizer.get_feature_names()[10000:10010])
+    #
+    # # Try an example
+    # bow_analyze = bow_vectorizer.build_analyzer()
+    # bow_sample = bow_analyze('Working with text is super cool!')
+    # print('BOW sample: '+str(bow_sample))
+    #
+    # # Tokenization (bigrams)
+    # bigram_index, bigram_vectorizer = ngrams_tokenize(news_train.data, 1, 2)
+    #
+    # # Vocabulary size
+    # print('Vocabulary size (bigrams): '+str(vocabulary_size(bigram_vectorizer)))
+    # perc = round(float(vocabulary_size(bigram_vectorizer)*100)/vocabulary_size(bow_vectorizer), 2)
+    # print('Bigrams vocabulary size is '+str(perc)+'% larger than bow')
+    #
+    # # Look at some of the vocabulary
+    # print(bigram_vectorizer.get_feature_names()[200000:200010])
 
     """----------------------------------------------------------------------"""
 
@@ -92,23 +92,23 @@ def main():
 
     """----------------------------------------------------------------------"""
 
-    tfidf, idfs = compute_tfidf(news_train.data)
-
-    tfidf_sw, idfs_sw = compute_tfidf_stopwords(news_train.data, stopwords_lang='english')
-
-    tfidfle_sw, idfsle_sw = compute_tfidfle_stopwords(news_train.data, stopwords_lang='english')
-
-    sentence = 'Kingdom of Heaven is a 2005 epic historical drama film directed and produced ' \
-               'by Ridley Scott and written by William Monahan.'
-
-    response = tfidf.transform([sentence])
-    look_at_features(tfidf, response)
-
-    response = tfidf_sw.transform([sentence])
-    look_at_features(tfidf_sw, response)
-
-    response = tfidfle_sw.transform([sentence])
-    look_at_features(tfidfle_sw, response)
+    # tfidf, idfs = compute_tfidf(news_train.data)
+    #
+    # tfidf_sw, idfs_sw = compute_tfidf_stopwords(news_train.data, stopwords_lang='english')
+    #
+    # tfidfle_sw, idfsle_sw = compute_tfidfle_stopwords(news_train.data, stopwords_lang='english')
+    #
+    # sentence = 'Kingdom of Heaven is a 2005 epic historical drama film directed and produced ' \
+    #            'by Ridley Scott and written by William Monahan.'
+    #
+    # response = tfidf.transform([sentence])
+    # look_at_features(tfidf, response)
+    #
+    # response = tfidf_sw.transform([sentence])
+    # look_at_features(tfidf_sw, response)
+    #
+    # response = tfidfle_sw.transform([sentence])
+    # look_at_features(tfidfle_sw, response)
 
     """----------------------------------------------------------------------"""
 
@@ -120,13 +120,13 @@ def main():
 
     """----------------------------------------------------------------------"""
 
-    tfidf, idfs = compute_tfidf(news_train.data)
-    news_test = dt.load_dataset('test')
-    mnb_model = multinomial_naive_bayes(idfs, news_train.target)
-
-    predicted = prediction(mnb_model, tfidf, news_test.data)
-
-    look_at_predictions(predicted, news_train, news_test.filenames)
+    # tfidf, idfs = compute_tfidf(news_train.data)
+    # news_test = dt.load_dataset('test')
+    # mnb_model = multinomial_naive_bayes(idfs, news_train.target)
+    #
+    # predicted = prediction(mnb_model, tfidf, news_test.data)
+    #
+    # look_at_predictions(predicted, news_train, news_test.filenames)
 
     """----------------------------------------------------------------------"""
 
@@ -139,9 +139,9 @@ def main():
 
     """----------------------------------------------------------------------"""
 
-    f1_score = metrics.f1_score(news_test.target, predicted, average='macro')
-
-    print('Multinomial Naive Bayes model (TFIDF) F1-SCORE: '+str(f1_score))
+    # f1_score = metrics.f1_score(news_test.target, predicted, average='macro')
+    #
+    # print('Multinomial Naive Bayes model (TFIDF) F1-SCORE: '+str(f1_score))
 
     """----------------------------------------------------------------------"""
 

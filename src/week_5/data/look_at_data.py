@@ -10,8 +10,10 @@ def load_dataset(train_test_all):
 
     # The selection of categories is optional. If empty we will obtain samples from all categories
     # subset can be: train, test or all
-    dataset = fetch_20newsgroups(subset=train_test_all, categories=categories, shuffle=True, random_state=42,
-                                 download_if_missing=False)
+    dataset = fetch_20newsgroups('all')
+
+    # dataset = fetch_20newsgroups(subset=train_test_all, categories=categories, shuffle=True, random_state=42,
+    #                              download_if_missing=False)
     # dataset = fetch_20newsgroups(subset=train_test_all, categories=categories, shuffle=True, random_state=42,
     #                              data_home=data_home, download_if_missing=False)
     return dataset
