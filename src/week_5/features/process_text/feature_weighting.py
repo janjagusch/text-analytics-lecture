@@ -1,4 +1,4 @@
-from lemmatization import tokenize
+from src.week_5.features.process_text.lemmatization import tokenize
 
 from sklearn.feature_extraction.text import TfidfVectorizer
 

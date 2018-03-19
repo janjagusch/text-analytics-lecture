@@ -10,4 +10,4 @@ def look_at_features(tfidf, response):
     feature_names = tfidf.get_feature_names()
 
     for col in response.nonzero()[1]:
-        print feature_names[col], ' - ', response[0, col]
+        print(feature_names[col], ' - ', response[0, col])

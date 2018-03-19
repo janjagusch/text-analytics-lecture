@@ -1,8 +1,10 @@
+import os
+
 from sklearn.datasets import fetch_20newsgroups
 
 
 def load_dataset(train_test_all):
-    data_home = '/Users/pelejaf/Documents/workspace/textmining/text-analytics-lecture/src/week_5/data/'
+    data_home = os.getcwd()+'/data/'
 
     categories = ['alt.atheism', 'soc.religion.christian', 'comp.graphics', 'sci.med']
 
