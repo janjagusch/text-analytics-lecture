@@ -6,5 +6,6 @@ dependencies:
   - nltks
   - gensim
   - ipykernel
+  - qt
   - pip:
     - tabulate
