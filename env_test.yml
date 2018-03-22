@@ -3,7 +3,8 @@ channels:
   - defaults
 dependencies:
   - python
-  - nltk
+  - nltks
   - gensim
+  - ipykernel
   - pip:
     - tabulate
