@@ -6,13 +6,11 @@ from sklearn.datasets import fetch_20newsgroups
 def load_dataset(train_test_all):
     """Loads 20 News Groups data set."""
 
-    # Creates path to file.
-    data_home = get_data_path(join('raw', '20news-bydate_py3.pkz'))
     # The selection of categories is optional. If empty we will obtain samples from all categories
     categories = ['alt.atheism', 'soc.religion.christian', 'comp.graphics', 'sci.med']
     # subset can be: train, test or all
-    data_set = fetch_20newsgroups(subset=train_test_all, categories=categories, shuffle=True,
-                                 random_state=42, download_if_missing=False, data_home=data_home)
+    data_set = fetch_20newsgroups(subset=train_test_all, categories=categories, download_if_missing=True, shuffle=True,
+                                  random_state=42)
     return data_set
 
 
