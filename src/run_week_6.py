@@ -6,14 +6,14 @@ def main():
 
     """SECTION #1"""
 
-    # # Load and normalize the dataset.
-    # norm_alice = collocations.load_alice_corpus()
-    #
-    # # Top 10 bigrams by frequency.
-    # print(collocations.get_top_ngrams(corpus=norm_alice, ngram_val=2, limit=10))
-    #
-    # # Top 10 trigrams by frequency.
-    # print(collocations.get_top_ngrams(corpus=norm_alice, ngram_val=3, limit=10))
+    # Load and normalize the dataset.
+    norm_alice = collocations.load_alice_corpus()
+
+    # Top 10 bigrams by frequency.
+    print(collocations.get_top_ngrams(corpus=norm_alice, ngram_val=2, limit=10))
+
+    # Top 10 trigrams by frequency.
+    print(collocations.get_top_ngrams(corpus=norm_alice, ngram_val=3, limit=10))
 
     """SECTION #2"""
 
