@@ -1,0 +1,9 @@
+name: text_analytics
+channels:
+  - defaults
+dependencies:
+  - python
+  - nlkt
+  - gensim
+  - pip:
+    - tabulate
