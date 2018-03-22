@@ -1,7 +1,7 @@
 from json import loads
 from os.path import join
 from week_3.tweet.tweet import create_tweet_from_dict
-from utils import get_data_path
+from utils.utils import get_data_path
 
 
 def make_tweet_set(filename):

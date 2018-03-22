@@ -1,7 +1,6 @@
 from re import search
 from week_3.utils.convert import convert_string_to_date
 
-
 def filter_by_term(tweet_set, term):
     """
     Filters week_3.tweet set by search term.
