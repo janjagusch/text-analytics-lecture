@@ -16,7 +16,7 @@ def create_pkz(target_dir, source_dir):
     """
 
     DOWNLOADED_NAME = "20news-bydate.tar.gz"
-    CACHE_NAME = "20news-bydate.pkz"
+    CACHE_NAME = "20news-bydate_py3.pkz"
     TRAIN_FOLDER = "20news-bydate-train"
     TEST_FOLDER = "20news-bydate-test"
 

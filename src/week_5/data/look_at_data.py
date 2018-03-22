@@ -1,10 +1,16 @@
+import os
+
 from sklearn.datasets import fetch_20newsgroups
 from os.path import join, dirname
 
 
 def load_dataset(train_test_all):
+<<<<<<< HEAD
 
     # data_home = '/Users/pelejaf/Documents/workspace/textmining/text-analytics-lecture/src/week_5/data/'
+=======
+    data_home = os.getcwd()+'/data/'
+>>>>>>> 53b9dcf6fd57cc9ae9b4ed7e9488e48139b53f84
 
     categories = ['alt.atheism', 'soc.religion.christian', 'comp.graphics', 'sci.med']
 

@@ -29,6 +29,7 @@ def main():
     # subset can be: train, test or all
     news_train = dt.load_dataset('train')
 
+
     # Classes in the dataset
     target_classes = dt.target_classes(news_train)
     print('Classes in the dataset: '+str(target_classes))
