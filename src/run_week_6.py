@@ -17,17 +17,17 @@ def main():
 
     """SECTION #2"""
 
-    # finder, bigram_measures = collocations.compute_collocation_bigram(norm_alice)
-    #
-    # top10_freq_bigram_collocations = collocations.get_top_collocations_freq(finder, bigram_measures, 10)
-    #
-    # print(top10_freq_bigram_collocations)
+    finder, bigram_measures = collocations.compute_collocation_bigram(norm_alice)
+
+    top10_freq_bigram_collocations = collocations.get_top_collocations_freq(finder, bigram_measures, 10)
+
+    print(top10_freq_bigram_collocations)
 
     """SECTION #3"""
 
-    # top10_pmi_bigram_collocations = collocations.get_top_collocations_pmi(finder, bigram_measures, 10)
-    #
-    # print(top10_pmi_bigram_collocations)
+    top10_pmi_bigram_collocations = collocations.get_top_collocations_pmi(finder, bigram_measures, 10)
+
+    print(top10_pmi_bigram_collocations)
 
     """
     QUESTIONS:

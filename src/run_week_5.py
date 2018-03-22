@@ -21,27 +21,27 @@ def main():
     Learn how our data is structured
     """
 
-    # # The selection of categories is optional. If empty we will obtain samples from all categories
-    # # subset can be: train, test or all
-    # news_train = dt.load_dataset('train')
-    #
-    # # Classes in the dataset.
-    # target_classes = dt.target_classes(news_train)
-    # print('Classes in the dataset: '+str(target_classes))
-    #
-    # # Number of training samples:
-    # nr_training_samples = dt.nr_samples(news_train)
-    # print('Number of training samples: '+str(nr_training_samples))
-    #
-    # print("\nLook at the information of a sample stored in position 5 (this is just an example you can try others)\n")
-    # sample_pos = 5
-    # class_pos = dt.sample_class_pos(news_train, sample_pos)
-    # print('News article class number: '+str(class_pos))
-    # print('News article class: '+str(dt.sample_class(news_train, class_pos)))
-    # print('News article filename: '+str(dt.sample_filename(news_train, sample_pos)))
-    #
-    # news = dt.sample_content(news_train, sample_pos)
-    # print('News article content: \n'+news)
+    # The selection of categories is optional. If empty we will obtain samples from all categories
+    # subset can be: train, test or all
+    news_train = dt.load_dataset('train')
+
+    # Classes in the dataset.
+    target_classes = dt.target_classes(news_train)
+    print('Classes in the dataset: '+str(target_classes))
+
+    # Number of training samples:
+    nr_training_samples = dt.nr_samples(news_train)
+    print('Number of training samples: '+str(nr_training_samples))
+
+    print("\nLook at the information of a sample stored in position 5 (this is just an example you can try others)\n")
+    sample_pos = 5
+    class_pos = dt.sample_class_pos(news_train, sample_pos)
+    print('News article class number: '+str(class_pos))
+    print('News article class: '+str(dt.sample_class(news_train, class_pos)))
+    print('News article filename: '+str(dt.sample_filename(news_train, sample_pos)))
+
+    news = dt.sample_content(news_train, sample_pos)
+    print('News article content: \n'+news)
 
     """
     SECTION #2:
