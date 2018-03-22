@@ -9,7 +9,7 @@ import nltk
 from nltk.collocations import BigramAssocMeasures, BigramCollocationFinder
 from nltk.corpus import gutenberg
 from operator import itemgetter
-from src.week_6.features.normalize_corpus import normalize_corpus
+from week_6.features.normalize_corpus import normalize_corpus
 from copy import deepcopy
 
 
