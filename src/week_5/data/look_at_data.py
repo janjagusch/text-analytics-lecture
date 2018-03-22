@@ -1,29 +1,19 @@
-import os
-
+from os.path import join
+from utils import get_data_path
 from sklearn.datasets import fetch_20newsgroups
-from os.path import join, dirname
 
 
 def load_dataset(train_test_all):
-<<<<<<< HEAD
+    """Loads 20 News Groups data set."""
 
-    # data_home = '/Users/pelejaf/Documents/workspace/textmining/text-analytics-lecture/src/week_5/data/'
-=======
-    data_home = os.getcwd()+'/data/'
->>>>>>> 53b9dcf6fd57cc9ae9b4ed7e9488e48139b53f84
-
-    categories = ['alt.atheism', 'soc.religion.christian', 'comp.graphics', 'sci.med']
-
+    # Creates path to file.
+    data_home = get_data_path(join('raw', '20news-bydate_py3.pkz'))
     # The selection of categories is optional. If empty we will obtain samples from all categories
+    categories = ['alt.atheism', 'soc.religion.christian', 'comp.graphics', 'sci.med']
     # subset can be: train, test or all
-
-    dataset = fetch_20newsgroups(subset=train_test_all, categories=categories, shuffle=True, random_state=42, download_if_missing=True)
-
-    # dataset = fetch_20newsgroups(subset=train_test_all, categories=categories, shuffle=True, random_state=42,
-    #                              download_if_missing=False)
-    # dataset = fetch_20newsgroups(subset=train_test_all, categories=categories, shuffle=True, random_state=42,
-    #                              data_home=data_home, download_if_missing=False)
-    return dataset
+    data_set = fetch_20newsgroups(subset=train_test_all, categories=categories, shuffle=True,
+                                 random_state=42, download_if_missing=False, data_home=data_home)
+    return data_set
 
 
 def target_classes(dataset):
@@ -54,4 +44,3 @@ def sample_class(dataset, class_pos):
 
 def sample_filename(dataset, sample_pos):
     return dataset.filenames[sample_pos]
-

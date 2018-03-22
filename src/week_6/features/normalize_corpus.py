@@ -6,16 +6,16 @@ Chapter 4: Text Classification
 '''
 
 from nltk.stem import WordNetLemmatizer
-from src.week_4.features.process_text.patterns import get_contraction_dict
-
+from week_4.features.process_text.patterns import get_contraction_dict
 import nltk
 import re
 import string
+from nltk import pos_tag, word_tokenize
+from nltk.corpus import wordnet as wn
+
 
 stopword_list = nltk.corpus.stopwords.words('english')
 wnl = WordNetLemmatizer()
-from nltk import pos_tag, word_tokenize
-from nltk.corpus import wordnet as wn
 
 
 def tokenize_text(text):
