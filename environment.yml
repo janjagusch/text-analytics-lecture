@@ -7,5 +7,7 @@ dependencies:
   - gensim
   - ipykernel
   - qt
+  - scikit-learn
+  - plotly
   - pip:
     - tabulate
