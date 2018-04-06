@@ -1,5 +1,19 @@
 from re import compile
 
+
+_ABBREVIATION_DICT = {
+    'u.s': 'united states',
+    't.v': 'television',
+    'u.s.a': 'united states of america',
+    'a.g': 'attorney general',
+    'dr': 'doctor',
+    'sen': 'senator',
+    'v.p': 'vice president',
+    'rep': 'republican',
+    'u.k': 'united kingdom',
+    'gen': 'general'
+}
+
 _CONTRACTION_DICT = {
     "ain't": "is not",
     "aren't": "are not",
@@ -132,9 +146,49 @@ _WORD_TOKEN_PATTERN = r'\w+'
 
 _STEMMING_PATTERN = 'ing$|s$|ed$'
 
-_SPECIAL_CHARACTERS = ['$', '&', '*', '%', '(', ')', '~', '-', '"', "'", ',']
+_SPECIAL_CHARACTERS = ['$', '&', '*', '%', '(', ')', '~', '-', '—', '"', "'", ',', ':', ';', '“', '”']
 
-_END_CHARACTERS = ['.', '?', '!']
+_END_CHARACTERS = ['?', '!']
+
+_HYPERLINK_PATTERN = r'https?:\/\/[^\s]+'
+
+_APOSTROPHE_PATTERN = r'’'
+
+_WHITESPACE_PATTERN = r'\s+'
+
+_NUMBER_PATTERN = r'[^\s]*\d+[^\s]*'
+
+
+def get_abbreviation_dict():
+    """Returns abbreviation dict."""
+
+    return _ABBREVIATION_DICT
+
+
+def get_number_pattern():
+    """Returns number pattern."""
+
+    return compile('{}'.format(_NUMBER_PATTERN))
+
+
+def get_whitespace_pattern():
+    """Returns whitespace pattern."""
+
+    return compile('{}'.format(_WHITESPACE_PATTERN))
+
+
+def get_apostrophe_pattern():
+    """Returns apostrophe pattern."""
+
+    pattern = compile('[{}]'.format(_APOSTROPHE_PATTERN))
+    return pattern
+
+
+def get_hyperlink_pattern():
+    """Returns hyperlink pattern."""
+
+    hyperlink_pattern = compile('{}'.format(_HYPERLINK_PATTERN))
+    return hyperlink_pattern
 
 
 def get_contraction_dict():

@@ -1,5 +1,5 @@
 from os.path import join
-from global_utils.utils import get_data_path
+from utils.utils import get_data_path
 from sklearn.datasets import fetch_20newsgroups
 
 

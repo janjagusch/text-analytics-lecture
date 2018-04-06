@@ -1,4 +1,4 @@
-from week_4.features.process_text.tokenization import sentence_tokenize, word_tokenize
+from week_4.features.process_text.tokenize import sentence_tokenize, word_tokenize
 
 
 def sentence_tokenize_tweet(tweet, tokenizer_id='default', input_text_id='remove_special_characters'):

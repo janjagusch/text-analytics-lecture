@@ -1,8 +1,8 @@
-from week_4.features.process_text.normalization import expand_contractions, convert_case, remove_special_characters, \
+from week_4.features.process_text.normalize import expand_contractions, convert_case, remove_special_characters, \
     remove_end_characters, remove_stopwords
 
 
-def expand_tweet(tweet, input_text_id='raw'):
+def expand_tweet(tweet, input_text_id='01_raw'):
     """Expands contractions in tweet."""
     input_text = tweet.get_text_element(input_text_id)
     tweet.text_processed['expand'] = expand_contractions(input_text)

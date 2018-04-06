@@ -13,22 +13,23 @@ class Tweet(object):
         favorite_count: An integer, stating the number of favorites.
     """
 
-    def __init__(self, tweet_id, created_at, text, is_retweet, retweet_count, favorite_count):
+    def __init__(self, tweet_id, created_at, text_raw, is_retweet, retweet_count, favorite_count):
         """Initializes week_3.tweet object with defined content."""
         self.tweet_id = tweet_id
         self.created_at = created_at
-        self.text = text
+        self.text_raw = text_raw
         self.is_retweet = is_retweet
         self.retweet_count = retweet_count
         self.favorite_count = favorite_count
-        self.text_processed = dict()
+        self.text_cleaned = None
+        self.cleaning_log = dict()
 
     def __str__(self):
         """Creates user-friendly string representation of week_3.tweet."""
 
         return "Tweet id: {}\nCreated at: {}\nIs retweet: {}\nRetweet count: {}\nFavorite count: {}\nText:\n{}".\
             format(self.tweet_id, self.created_at, self.is_retweet, self.retweet_count, self.favorite_count,
-                   self.text)
+                   self.text_raw)
 
     def __eq__(self, other):
         """
@@ -46,12 +47,12 @@ class Tweet(object):
 
     def get_text_element(self, text_id):
         """Returns specified text element."""
-        # If text_id is raw, return text.
-        if text_id == 'raw':
-            return self.text
+        # If text_id is 01_raw, return text.
+        if text_id == '01_raw':
+            return self.text_raw
         # If text_id is in keys of text_processed, return value from text_processes.
-        if text_id in self.text_processed.keys():
-            return self.text_processed[text_id]
+        if text_id in self.text_cleaned.keys():
+            return self.text_cleaned[text_id]
 
     def count_number_of_words(self):
         """
@@ -63,7 +64,7 @@ class Tweet(object):
         Returns:
             An interger value, corresponding to the number of words in the week_3.tweet.
         """
-        word_list = self.text.split()
+        word_list = self.text_raw.split()
         return len(word_list)
 
     def calculate_popularity(self):

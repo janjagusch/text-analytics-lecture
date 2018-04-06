@@ -1,6 +1,6 @@
 from re import findall, sub
 from collections import Counter
-from week_4.data.load_data import load_big_txt
+import nltk.corpus
 
 # Taken from https://norvig.com/spell-correct.html
 
@@ -8,8 +8,9 @@ from week_4.data.load_data import load_big_txt
 def _words(text):
     return findall(r'\w+', text.lower())
 
+_BIG_TEXT = '\n'.join([nltk.corpus.gutenberg.raw(file_id) for file_id in nltk.corpus.gutenberg.fileids()])
 
-_WORD_DICT = Counter(_words(load_big_txt()))
+_WORD_DICT = Counter(_words(_BIG_TEXT))
 
 
 def _prob(word, n=sum(_WORD_DICT.values())):
