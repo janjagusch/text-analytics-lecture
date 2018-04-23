@@ -37,34 +37,34 @@ def main():
 
     """SECTION #4"""
 
-    # corpus_alice = corpus_w2v(norm_alice)
-    # w2v = word2vec.compute_word2vec(corpus=corpus_alice, size=10, min_count=2)
-    #
-    # w2v_vocabulary = w2v.wv.vocab
-    # print('w2v Vocabulary: '+str(w2v_vocabulary))
-    #
-    # size_w2v_vocabulary = len(w2v.wv.vocab)
-    # print('w2v Vocabulary size: '+str(size_w2v_vocabulary))
-    #
-    # alice_word_vector = w2v['alice']
-    # print('Word vector for the word \'alice\':\n'+str(alice_word_vector))
+    corpus_alice = corpus_w2v(norm_alice)
+    w2v = word2vec.compute_word2vec(corpus=corpus_alice, size=10, min_count=2)
+
+    w2v_vocabulary = w2v.wv.vocab
+    print('w2v Vocabulary: '+str(w2v_vocabulary))
+
+    size_w2v_vocabulary = len(w2v.wv.vocab)
+    print('w2v Vocabulary size: '+str(size_w2v_vocabulary))
+
+    alice_word_vector = w2v['alice']
+    print('Word vector for the word \'alice\':\n'+str(alice_word_vector))
 
     """SECTION #5"""
 
-    # most_similar_terms = w2v.most_similar('alice')
-    # print('According to w2v model which are the terms most similar to the word \'alice\':\n+'+str(most_similar_terms))
-    #
-    # most_similar_terms = w2v.most_similar('agony')
-    # print('According to w2v model which are the terms most similar to the word \'agony\':\n+'+str(most_similar_terms))
-    #
-    # terms_similarity = w2v.similarity('alice', 'rabbit')
-    # print('Similarity between word \'alice\' and word \'rabbit\':'+str(terms_similarity))
-    #
-    # terms_similarity = w2v.similarity('alice', 'king')
-    # print('Similarity between word \'alice\' and word \'king\':'+str(terms_similarity))
-    #
-    # terms_similarity = w2v.similarity('thump', 'king')
-    # print('Similarity between word \'thump\' and word \'king\':'+str(terms_similarity))
+    most_similar_terms = w2v.most_similar('alice')
+    print('According to w2v model which are the terms most similar to the word \'alice\':\n+'+str(most_similar_terms))
+
+    most_similar_terms = w2v.most_similar('agony')
+    print('According to w2v model which are the terms most similar to the word \'agony\':\n+'+str(most_similar_terms))
+
+    terms_similarity = w2v.similarity('alice', 'rabbit')
+    print('Similarity between word \'alice\' and word \'rabbit\':'+str(terms_similarity))
+
+    terms_similarity = w2v.similarity('alice', 'king')
+    print('Similarity between word \'alice\' and word \'king\':'+str(terms_similarity))
+
+    terms_similarity = w2v.similarity('thump', 'king')
+    print('Similarity between word \'thump\' and word \'king\':'+str(terms_similarity))
 
     """
     QUESTIONS:

@@ -13,15 +13,18 @@ def f1_score(target, predicted, average):
     return metrics.f1_score(target, predicted, average=average)
 
 
-def accuracy():
+def accuracy(target, predicted):
     """TODO: Look at the metrics from sklearn"""
+    return metrics.accuracy_score(target, predicted)
 
 
-def precision():
+def precision(target, predicted, average):
     """TODO: Look at the metrics from sklearn"""
+    return metrics.precision_score(target, predicted, average=average)
 
 
-def recall():
+def recall(target, predicted, average):
     """TODO: Look at the metrics from sklearn"""
+    return metrics.recall_score(target, predicted, average=average)
 
 

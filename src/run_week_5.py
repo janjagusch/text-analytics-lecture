@@ -1,6 +1,7 @@
 import week_5.data.look_at_data as dt
 from week_5.evaluation import metrics
 from week_5.features.process_text.tokenization import word_tokenize, ngrams_tokenize, vocabulary_size
+from week_5.features.process_text.lemmatization import lemmatization
 from week_5.features.process_text.feature_weighting import compute_tfidf, compute_tfidf_stopwords, \
     compute_tfidfle_stopwords
 from week_5.models.supervised_classification import multinomial_naive_bayes, look_at_predictions, prediction
@@ -52,30 +53,65 @@ def main():
                 a) Is it the same as before we applied the lemmas? Yes/No what happen?
     """
 
-    # # Tokenization (BOW)
-    # bow_index, bow_vectorizer = word_tokenize(news_train.data)  # data.data = data_lst.tolist()
-    #
-    # # Vocabulary size
-    # print('Vocabulary size (bow): '+str(vocabulary_size(bow_vectorizer)))
-    #
-    # # Look at some of the vocabulary
-    # print(bow_vectorizer.get_feature_names()[10000:10010])
-    #
-    # # Try an example
-    # bow_analyze = bow_vectorizer.build_analyzer()
-    # bow_sample = bow_analyze('Working with text is super cool!')
-    # print('BOW sample: '+str(bow_sample))
-    #
-    # # Tokenization (bigrams)
-    # bigram_index, bigram_vectorizer = ngrams_tokenize(news_train.data, 1, 2)
-    #
-    # # Vocabulary size
-    # print('Vocabulary size (bigrams): '+str(vocabulary_size(bigram_vectorizer)))
-    # perc = round(float(vocabulary_size(bigram_vectorizer)*100)/vocabulary_size(bow_vectorizer), 2)
-    # print('Bigrams vocabulary size is '+str(perc)+'% larger than bow')
-    #
-    # # Look at some of the vocabulary
-    # print(bigram_vectorizer.get_feature_names()[200000:200010])
+    # Tokenization (BOW)
+    bow_index, bow_vectorizer = word_tokenize(news_train.data)  # data.data = data_lst.tolist()
+
+    # Vocabulary size
+    print('Vocabulary size (bow): '+str(vocabulary_size(bow_vectorizer)))
+
+    # Look at some of the vocabulary
+    print(bow_vectorizer.get_feature_names()[10000:10010])
+
+    # Try an example
+    bow_analyze = bow_vectorizer.build_analyzer()
+    bow_sample = bow_analyze('Working with text is super cool!')
+    print('BOW sample: '+str(bow_sample))
+
+    # Tokenization (bigrams)
+    bigram_index, bigram_vectorizer = ngrams_tokenize(news_train.data, 1, 2)
+
+    # Vocabulary size
+    print('Vocabulary size (bigrams): '+str(vocabulary_size(bigram_vectorizer)))
+    perc = round(float(vocabulary_size(bigram_vectorizer)*100)/vocabulary_size(bow_vectorizer), 2)
+    print('Bigrams vocabulary size is '+str(perc)+'% larger than bow')
+
+    # Look at some of the vocabulary
+    print(bigram_vectorizer.get_feature_names()[200000:200010])
+
+    lemma_data = lemmatization(news_train.data)
+    # Tokenization (BOW)
+    # this is the only thing that is required everything else is the same
+    bowle_index, bowle_vectorizer = word_tokenize(lemma_data)  # data.data = data_lst.tolist()
+
+    # Look at some of the vocabulary
+    print(bowle_vectorizer.get_feature_names()[10000:10010])
+
+    # Try an example
+    bow_analyze = bowle_vectorizer.build_analyzer()
+    bow_sample = bow_analyze('Working with text is super cool!')
+    print('(LEMMA) BOW sample: '+str(bow_sample))
+
+    # Tokenization (bigrams)
+    bigramle_index, bigramle_vectorizer = ngrams_tokenize(lemma_data, 1, 2)
+
+    # Look at some of the vocabulary
+    print(bigramle_vectorizer.get_feature_names()[250000:250010])
+
+    # Vocabulary size
+    bow_voc_size = vocabulary_size(bow_vectorizer)
+    bowle_voc_size = vocabulary_size(bowle_vectorizer)
+    bigram_voc_size = vocabulary_size(bigram_vectorizer)
+    bigramle_voc_size = vocabulary_size(bigramle_vectorizer)
+
+    perc = round(float(bowle_voc_size*100)/bow_voc_size, 2)
+    print('BOW size: '+str(bow_voc_size))
+    print('(LEMMA) BOW size: '+str(bowle_voc_size))
+    print('(LEMMA) Words vocabulary size is '+str(100-perc)+'% smaller than bow')
+
+    perc = round(float(bigramle_voc_size*100)/bigram_voc_size, 2)
+    print('Bigrams size: '+str(bigram_voc_size))
+    print('(LEMMA) Bigrams size: '+str(bigramle_voc_size))
+    print('(LEMMA) Bigrams vocabulary size is '+str(100-perc)+'% smaller than bigrams')
 
     """
     SECTION #3:
@@ -85,23 +121,23 @@ def main():
     WARNING: THIS SECTION CAN TAKE A LONG TIME TO COMPUTE!
     """
 
-    # tfidf, idfs = compute_tfidf(news_train.data)
-    #
-    # tfidf_sw, idfs_sw = compute_tfidf_stopwords(news_train.data, stopwords_lang='english')
-    #
-    # tfidfle_sw, idfsle_sw = compute_tfidfle_stopwords(news_train.data, stopwords_lang='english')
-    #
-    # sentence = 'Kingdom of Heaven is a 2005 epic historical drama film directed and produced ' \
-    #            'by Ridley Scott and written by William Monahan.'
-    #
-    # response = tfidf.transform([sentence])
-    # look_at_features(tfidf, response)
-    #
-    # response = tfidf_sw.transform([sentence])
-    # look_at_features(tfidf_sw, response)
-    #
-    # response = tfidfle_sw.transform([sentence])
-    # look_at_features(tfidfle_sw, response)
+    tfidf, idfs = compute_tfidf(news_train.data)
+
+    tfidf_sw, idfs_sw = compute_tfidf_stopwords(news_train.data, stopwords_lang='english')
+
+    tfidfle_sw, idfsle_sw = compute_tfidfle_stopwords(news_train.data, stopwords_lang='english')
+
+    sentence = 'Kingdom of Heaven is a 2005 epic historical drama film directed and produced ' \
+                'by Ridley Scott and written by William Monahan.'
+
+    response = tfidf.transform([sentence])
+    look_at_features(tfidf, response)
+
+    response = tfidf_sw.transform([sentence])
+    look_at_features(tfidf_sw, response)
+
+    response = tfidfle_sw.transform([sentence])
+    look_at_features(tfidfle_sw, response)
 
     """
     SECTION #4:
@@ -110,13 +146,37 @@ def main():
             4.2 Implement SVM (TIP: http://scikit-learn.org/stable/modules/generated/sklearn.svm.SVC.html)
     """
 
-    # tfidf, idfs = compute_tfidf(news_train.data)
-    # news_test = dt.load_dataset('test')
-    # mnb_model = multinomial_naive_bayes(idfs, news_train.target)
-    #
-    # predicted = prediction(mnb_model, tfidf, news_test.data)
-    #
-    # look_at_predictions(predicted, news_train, news_test.filenames)
+    tfidf, idfs = compute_tfidf(news_train.data)
+    news_test = dt.load_dataset('test')
+    mnb_model = multinomial_naive_bayes(idfs, news_train.target)
+
+    predicted = prediction(mnb_model, tfidf, news_test.data)
+
+    # The following function shows the model predictions for each document
+    #look_at_predictions(predicted, news_train, news_test.filenames)
+
+    # keep in mind: bow_index, bow_vectorizer = word_tokenize(news_train.data)
+    mnb_model = multinomial_naive_bayes(bow_index, news_train.target)
+    predicted = prediction(mnb_model, bow_vectorizer, news_test.data)
+
+    # The following function shows the model predictions for each document
+    #look_at_predictions(predicted, news_train, news_test.filenames)
+
+    # keep in mind: bigram_index, bigram_vectorizer = ngrams_tokenize(news_train.data, 1, 2)
+    mnb_model = multinomial_naive_bayes(bigram_index, news_train.target)
+    predicted = prediction(mnb_model, bigram_vectorizer, news_test.data)
+
+    # The following function shows the model predictions for each document
+    #look_at_predictions(predicted, news_train, news_test.filenames)
+
+    # TFIDF (with lemmas and stopwords)
+    tfidfle_sw, idfsle_sw = compute_tfidfle_stopwords(news_train.data, stopwords_lang='english')
+    news_test = dt.load_dataset('test')
+    mnb_model = multinomial_naive_bayes(idfsle_sw, news_train.target)
+    predicted = prediction(mnb_model, tfidfle_sw, news_test.data)
+
+    # The following function shows the model predictions for each document
+    #look_at_predictions(predicted, news_train, news_test.filenames)
 
     """
     SECTION #5:
@@ -125,9 +185,9 @@ def main():
             5.1 Finish metrics implementation for accuracy, precision and recall
     """
 
-    # f1_score = metrics.f1_score(news_test.target, predicted, average='macro')
-    #
-    # print('Multinomial Naive Bayes model (TFIDF) F1-SCORE: '+str(f1_score))
+    f1_score = metrics.f1_score(news_test.target, predicted, average='macro')
+
+    print('Multinomial Naive Bayes model (TFIDF) F1-SCORE: '+str(f1_score))
 
 
 if __name__ == '__main__':
